@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>📚 Library Management System</h1>
+    <p>Track books, availability, and quick library stats.</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Add a Book</h2>
+      <form id="book-form" class="grid-form">
+        <label>
+          Title
+          <input id="title" required placeholder="The Great Gatsby" />
+        </label>
+        <label>
+          Author
+          <input id="author" required placeholder="F. Scott Fitzgerald" />
+        </label>
+        <label>
+          Category
+          <input id="category" required placeholder="Classic" />
+        </label>
+        <label>
+          ISBN
+          <input id="isbn" required placeholder="9780743273565" />
+        </label>
+        <button type="submit">Add Book</button>
+      </form>
+      <p id="form-message" class="message"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Library Dashboard</h2>
+      <div class="stats">
+        <article><h3 id="total-count">0</h3><p>Total Books</p></article>
+        <article><h3 id="available-count">0</h3><p>Available</p></article>
+        <article><h3 id="issued-count">0</h3><p>Issued</p></article>
+      </div>
+      <input id="search" placeholder="Search by title, author, category, or ISBN" />
+    </section>
+
+    <section class="panel full">
+      <h2>Book Catalog</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>ISBN</th>
+              <th>Status</th>
+              <th>Action</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="book-list"></tbody>
+        </table>
+      </div>
+      <p id="empty-state" class="muted">No books added yet.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "@dma/api",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/dev-server.js",
+    "build": "echo 'build api placeholder'",
+    "test": "node --test test/*.test.js",
+    "lint": "echo 'lint api'",
+    "typecheck": "echo 'typecheck api placeholder'"
+  }
+}

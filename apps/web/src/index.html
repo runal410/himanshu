@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DMA Playbook & Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body { background: #f8fafc; color: #0f172a; }
+      .bubble { position: absolute; border-radius: 9999px; opacity: .85; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; }
+    </style>
+  </head>
+  <body class="font-sans">
+    <div class="max-w-7xl mx-auto p-6 space-y-6">
+      <header class="bg-slate-900 text-white rounded-2xl p-6 shadow-lg">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="uppercase tracking-[0.3em] text-xs text-slate-300">Multi-tenant DMA Platform</p>
+            <h1 class="text-3xl font-bold mt-2">DMA Playbook & Tool — Premapped IRO Catalogue</h1>
+            <p class="text-slate-200 mt-2 max-w-3xl">Auditable workflow covering scoping, sector IRO browsing, stakeholder engagement, dual-lens scoring, and a presentation-ready matrix with export-ready outputs.</p>
+          </div>
+          <div class="bg-white/10 rounded-xl p-4 min-w-72">
+            <div class="text-sm text-slate-300">Demo tenant</div>
+            <div class="text-xl font-semibold">Acme Renewables Group</div>
+            <div class="mt-2 text-sm">Thresholds: Impact 3.0 / Financial 3.0</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid md:grid-cols-4 gap-4">
+        <div class="bg-white rounded-xl p-4 shadow"><div class="text-sm text-slate-500">Sectors</div><div class="text-2xl font-bold">11</div></div>
+        <div class="bg-white rounded-xl p-4 shadow"><div class="text-sm text-slate-500">Seeded IROs</div><div class="text-2xl font-bold">330</div></div>
+        <div class="bg-white rounded-xl p-4 shadow"><div class="text-sm text-slate-500">Stakeholders</div><div class="text-2xl font-bold">10</div></div>
+        <div class="bg-white rounded-xl p-4 shadow"><div class="text-sm text-slate-500">Auditable stages</div><div class="text-2xl font-bold">6</div></div>
+      </section>
+
+      <section class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow space-y-4">
+          <h2 class="text-xl font-semibold">Workflow</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <article class="border rounded-xl p-4"><h3 class="font-semibold">Setup Wizard</h3><p class="text-sm mt-2">CompanyProfile, standards checklist, reporting boundary, value-chain mapping, and exclusions.</p></article>
+            <article class="border rounded-xl p-4"><h3 class="font-semibold">Topics Universe</h3><p class="text-sm mt-2">ESRS topical areas plus long-list CRUD from reports and internal source material.</p></article>
+            <article class="border rounded-xl p-4"><h3 class="font-semibold">Sector Catalogue Browser</h3><p class="text-sm mt-2">11-sector browser with pillar, risk nature, and IRO type filters plus bulk shortlist actions.</p></article>
+            <article class="border rounded-xl p-4"><h3 class="font-semibold">Stakeholder Engagement</h3><p class="text-sm mt-2">Engagement log with influence × interest prioritization and attachment support.</p></article>
+            <article class="border rounded-xl p-4"><h3 class="font-semibold">Shortlisting & Scoring</h3><p class="text-sm mt-2">Impact and financial tabs with exact formulas, tooltips, and server-side persistence.</p></article>
+            <article class="border rounded-xl p-4"><h3 class="font-semibold">Admin</h3><p class="text-sm mt-2">RBAC, weight profiles, branding, thresholds, and audit browser for all mutations.</p></article>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h2 class="text-xl font-semibold mb-4">Stakeholder sample</h2>
+          <table class="w-full text-sm">
+            <thead><tr class="text-left text-slate-500"><th>Group</th><th>Influence</th><th>Interest</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr class="border-t"><td>Investors</td><td>5</td><td>5</td><td>25</td></tr>
+              <tr class="border-t"><td>Employees</td><td>4</td><td>5</td><td>20</td></tr>
+              <tr class="border-t"><td>Regulators</td><td>5</td><td>4</td><td>20</td></tr>
+              <tr class="border-t"><td>Local Communities</td><td>4</td><td>4</td><td>16</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl p-6 shadow">
+        <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-semibold">Materiality Matrix</h2><div class="text-sm text-slate-500">X = Impact Score · Y = Financial Score · Bubble size = Composite</div></div>
+        <div class="relative border rounded-xl h-[420px] bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
+          <div class="absolute inset-0 grid grid-cols-2 grid-rows-2">
+            <div class="border-b border-r p-4 text-sm text-slate-500">Monitor</div>
+            <div class="border-b p-4 text-right text-sm text-slate-500">Financial-led</div>
+            <div class="border-r p-4 text-sm text-slate-500 self-end">Impact-led</div>
+            <div class="p-4 text-right text-sm font-semibold text-slate-700">High Priority</div>
+          </div>
+          <div class="absolute left-1/2 top-0 bottom-0 w-px bg-slate-300"></div>
+          <div class="absolute top-1/2 left-0 right-0 h-px bg-slate-300"></div>
+          <div class="bubble bg-emerald-600" style="width:68px;height:68px;left:68%;bottom:72%;">E</div>
+          <div class="bubble bg-blue-600" style="width:56px;height:56px;left:54%;bottom:64%;">S</div>
+          <div class="bubble bg-amber-600" style="width:48px;height:48px;left:34%;bottom:70%;">G</div>
+          <div class="bubble bg-fuchsia-600" style="width:62px;height:62px;left:74%;bottom:52%;">E/S</div>
+          <div class="bubble bg-slate-700" style="width:44px;height:44px;left:22%;bottom:28%;">S/G</div>
+          <div class="absolute bottom-2 left-4 text-xs text-slate-500">0</div>
+          <div class="absolute bottom-2 right-4 text-xs text-slate-500">5 impact</div>
+          <div class="absolute top-2 left-4 text-xs text-slate-500">5 financial</div>
+        </div>
+      </section>
+
+      <section class="grid lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h2 class="text-xl font-semibold mb-3">Scoring formulas</h2>
+          <ul class="list-disc ml-5 text-sm space-y-2">
+            <li>Impact Score = 0.25×Scale + 0.25×Scope + 0.20×Irremediability + 0.20×Likelihood + 0.10×StakeholderInput.</li>
+            <li>Financial Score = √(Magnitude × Likelihood).</li>
+            <li>Composite Score = average(Impact Score, Financial Score).</li>
+            <li>Quadrants use configurable defaults T_impact = 3.0 and T_financial = 3.0.</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h2 class="text-xl font-semibold mb-3">Export structure</h2>
+          <ol class="list-decimal ml-5 text-sm space-y-2">
+            <li>1.Scoping &amp; Value chain Mapping</li>
+            <li>2. Primary long list</li>
+            <li>3.IRO Sector classification -&gt; with 11 sector tabs (3.1–3.11)</li>
+            <li>4. Stakeholder Engagement</li>
+            <li>5. Shortlist &amp; Scoring</li>
+            <li>6. Materiality Matrix</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

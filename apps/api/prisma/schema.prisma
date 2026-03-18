@@ -1,0 +1,206 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  Admin
+  Editor
+  Viewer
+  Auditor
+}
+
+enum Pillar {
+  E
+  S
+  G
+  ES
+  SG
+}
+
+enum RiskNature {
+  Transition
+  Physical
+  NA
+}
+
+enum IroType {
+  NegativeImpact
+  PositiveImpact
+  Risk
+  Opportunity
+}
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  settings    Json
+  users       User[]
+  auditLogs   AuditLog[]
+}
+
+model User {
+  id           String   @id @default(cuid())
+  orgId        String
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role
+  organization Organization @relation(fields: [orgId], references: [id])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  orgId      String
+  actorId    String?
+  entityType String
+  entityId   String
+  action     String
+  before     Json?
+  after      Json?
+  at         DateTime @default(now())
+  organization Organization @relation(fields: [orgId], references: [id])
+}
+
+model StandardMapping {
+  id     String @id @default(cuid())
+  orgId  String
+  code   String
+  notes  String?
+}
+
+model ValueChainSegment {
+  id          String @id @default(cuid())
+  orgId       String
+  name        String
+  description String
+  geographies Json
+}
+
+model CompanyProfile {
+  id                     String @id @default(cuid())
+  orgId                  String @unique
+  reportingYear          Int
+  industryGICS           String
+  naceCode               String
+  hqCountry              String
+  employees              Int
+  revenue                Float
+  listing                String
+  frameworkPrimary       String @default("ESRS")
+  frameworkSecondary     String?
+  materialityApproach    String @default("Double Materiality (Impact + Financial)")
+  consolidationMethod    String
+  controlBoundary        String
+  jvIncluded             Boolean
+  supplyChainTiersCovered Int
+  exclusions             Json
+}
+
+model TopicLongList {
+  id         String @id @default(cuid())
+  orgId      String
+  source     String
+  reportName String
+  link       String?
+  topic      String
+}
+
+model Sector {
+  id   String @id @default(cuid())
+  name String @unique
+}
+
+model IRO {
+  id          String @id @default(cuid())
+  orgId       String
+  sectorId    String
+  topic       String
+  iroSummary  String
+  iroCode     String
+  pillar      Pillar
+  iroName     String
+  riskNature  RiskNature
+  iroType     IroType
+  description String
+  source      String
+}
+
+model Stakeholder {
+  id                    String @id @default(cuid())
+  orgId                 String
+  group                 String
+  category              String
+  method                String
+  frequency             String
+  preliminaryMaterial   Boolean
+  influence             Int
+  interest              Int
+  prioritizationScore   Int
+  keyTopics             String
+  contact               String
+  status                String
+}
+
+model Shortlist {
+  id       String @id @default(cuid())
+  orgId    String
+  iroId    String
+  selected Boolean
+  notes    String?
+}
+
+model ImpactScoring {
+  id               String @id @default(cuid())
+  shortlistId      String @unique
+  scale            Int
+  scope            Int
+  irremediability  Int?
+  likelihood       Int
+  stakeholderInput Int
+  impactScore      Float
+}
+
+model FinancialScoring {
+  id             String @id @default(cuid())
+  shortlistId    String @unique
+  magnitude      Int
+  likelihood     Int
+  financialScore Float
+}
+
+model CompositeResult {
+  id                    String @id @default(cuid())
+  shortlistId           String @unique
+  compositeScore        Float
+  pillar                String
+  materialityConclusion String
+  explanations          Json
+}
+
+model MatrixPoint {
+  id             String @id @default(cuid())
+  orgId          String
+  iroTopic       String
+  impactScore    Float
+  financialScore Float
+  compositeScore Float
+  pillar         String
+  quadrant       String
+  priorityRank   Int
+}
+
+model Attachment {
+  id         String @id @default(cuid())
+  orgId      String
+  entityType String
+  entityId   String
+  fileKey    String
+  fileName   String
+  mime       String
+  size       Int
+}
